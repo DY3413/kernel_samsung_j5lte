@@ -1,4 +1,3 @@
-/* Copyright (c) 2015 Samsung Electronics Co., Ltd. */
 /*
  * INET		An implementation of the TCP/IP protocol suite for the LINUX
  *		operating system.  INET is implemented using the  BSD Socket
@@ -38,15 +37,6 @@
  *		as published by the Free Software Foundation; either version
  *		2 of the License, or (at your option) any later version.
  */
-/*
- *  Changes:
- *  KwnagHyun Kim <kh0304.kim@samsung.com> 2015/07/08
- *  Baesung Park  <baesung.park@samsung.com> 2015/07/08
- *  Vignesh Saravanaperumal <vignesh1.s@samsung.com> 2015/07/08
- *    Add codes to share UID/PID information
- *
- */
-
 #ifndef _SOCK_H
 #define _SOCK_H
 
@@ -77,7 +67,6 @@
 #include <linux/atomic.h>
 #include <net/dst.h>
 #include <net/checksum.h>
-#include <net/tcp_states.h>
 
 struct cgroup;
 struct cgroup_subsys;
@@ -2255,15 +2244,6 @@ static inline struct sock *skb_steal_sock(struct sk_buff *skb)
 		return sk;
 	}
 	return NULL;
-}
-
-/* This helper checks if a socket is a full socket,
- * ie _not_ a timewait or request socket.
- * TODO: Check for TCPF_NEW_SYN_RECV when that starts to exist.
- */
-static inline bool sk_fullsock(const struct sock *sk)
-{
-	return (1 << sk->sk_state) & ~(TCPF_TIME_WAIT);
 }
 
 extern void sock_enable_timestamp(struct sock *sk, int flag);

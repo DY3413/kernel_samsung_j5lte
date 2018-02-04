@@ -530,11 +530,6 @@ Example:
 
 		qcom,max-bandwidth-low-kbps = <2300000>;
 		qcom,max-bandwidth-high-kbps = <3000000>;
-		qcom,max-bw-settings = <1 2300000>,
-				       <2 1700000>,
-				       <4 2300000>,
-				       <8 2000000>;
-
 		qcom,max-mixer-width = <2048>;
 		qcom,max-clk-rate = <320000000>;
 		qcom,vbif-settings = <0x0004 0x00000001>,
